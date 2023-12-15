@@ -5,6 +5,7 @@
     -- Main Program --
 
     Author: Colton Ogden
+    Edited by: Chris Joubert
     cogden@cs50.harvard.edu
 
     Originally programmed by Atari in 1972. Features two
@@ -241,10 +242,15 @@ function love.update(dt)
         player1.dy = 0
     end
 
-    -- player 2
-    if love.keyboard.isDown('up') then
+    -- player 2 
+    -- Does not move if the balls is not heading towards it for fair play
+    -- checks if the ball is heading towards player 2 and is above it
+    -- adds upward motion if the ball is above
+    if ball.y < player2.y and ball.dx > 0 then
         player2.dy = -PADDLE_SPEED
-    elseif love.keyboard.isDown('down') then
+    -- checks if the ball is heading towards player 2 and is below it
+    -- adds downward motion if the ball is below
+    elseif ball.y > (player2.y + player2.height) and ball.dx > 0 then
         player2.dy = PADDLE_SPEED
     else
         player2.dy = 0
