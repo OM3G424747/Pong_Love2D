@@ -250,7 +250,7 @@ function love.update(dt)
         player2.dy = -PADDLE_SPEED
     -- checks if the ball is heading towards player 2 and is below it
     -- adds downward motion if the ball is below
-    elseif ball.y > (player2.y + player2.height) and ball.dx > 0 then
+    elseif (ball.y + ball.height) > (player2.y + player2.height) and ball.dx > 0 then
         player2.dy = PADDLE_SPEED
     else
         player2.dy = 0
